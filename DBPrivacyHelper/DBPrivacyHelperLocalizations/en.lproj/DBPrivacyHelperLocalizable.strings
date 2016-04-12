@@ -22,7 +22,7 @@
 "Twitter" = "Twitter";
 "Facebook" = "Facebook";
 
-"Allow access to \"%@\"\nwith these steps:" = "Allow access to \"%@\"\nwith these steps:";
+"Allow access to \"%@\"\nwith these steps:" = "Cho phép truy cập vào \"%@\"\nbằng nhứng bước sau:";
 
 "Open device settings" = "Mở cài đặt (Setting)";
 "Tap on Privacy" = "Chọn Quyền riêng tư (Privacy)";
