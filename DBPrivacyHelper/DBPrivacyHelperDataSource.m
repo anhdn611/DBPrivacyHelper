@@ -59,7 +59,9 @@ NSLocalizedStringFromTable(key, @"DBPrivacyHelperLocalizable", nil)
 
 - (NSString *)dbph_typeAllowText:(NSString *)string
 {
-    return [NSString stringWithFormat:[@"Allow %@ to use \"%@\"" dbph_LocalizedString], [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"], string];
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"] ?:
+    [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"];
+    return [NSString stringWithFormat:[@"Allow %@ to use \"%@\"" dbph_LocalizedString], appName, string];
 }
 
 - (CGFloat)dbph_cellHeightForText:(NSString *)text
