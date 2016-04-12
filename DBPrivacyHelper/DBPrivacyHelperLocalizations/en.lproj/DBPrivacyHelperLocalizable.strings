@@ -8,7 +8,7 @@
 
 "Close" = "Close";
 
-"Location Services" = "Location Services";
+"Location Services" = "Dịch vụ Định vị";
 "Photos" = "Photos";
 "Camera" = "Camera";
 "Health" = "Health";
@@ -24,8 +24,8 @@
 
 "Allow access to \"%@\"\nwith these steps:" = "Allow access to \"%@\"\nwith these steps:";
 
-"Open device settings" = "Open device settings";
-"Tap on Privacy" = "Tap on Privacy";
-"Tap on \"%@\"" = "Tap on \"%@\"";
-"Allow your application to use \"%@\"" = "Allow your application to use \"%@\"";
-"Select the alert style you prefer" = "Select the alert style you prefer";
+"Open device settings" = "Mở cài đặt (Setting)";
+"Tap on Privacy" = "Chọn Quyền riêng tư (Privacy)";
+"Tap on \"%@\"" = "Bật \"%@\"";
+"Allow %@ to use \"%@\"" = "Cho phép %@ sử dụng \"%@\"";
+"Select the alert style you prefer" = "Chọn loại thông báo mà bạn thích";
