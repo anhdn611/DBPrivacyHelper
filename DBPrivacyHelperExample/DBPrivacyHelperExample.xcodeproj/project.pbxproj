@@ -25,6 +25,7 @@
 		9AE88D471A11050D00086242 /* UIViewController+DBPrivacyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE88D421A11050D00086242 /* UIViewController+DBPrivacyHelper.m */; };
 		9AE88D4A1A11100700086242 /* DBPrivateHelperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE88D491A11100700086242 /* DBPrivateHelperCell.m */; };
 		EBF7EF5F1A66D212004C5784 /* DBPrivacyHelperLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9AE88D3A1A11050D00086242 /* DBPrivacyHelperLocalizable.strings */; };
+		EC614D5C1CBFBDA800F77573 /* DBPrivateActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC614D5B1CBFBDA800F77573 /* DBPrivateActionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		9AE88D491A11100700086242 /* DBPrivateHelperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrivateHelperCell.m; sourceTree = "<group>"; };
 		D0FEAB5AE73F6F6808F8FF69 /* Pods-DBPrivacyHelperExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DBPrivacyHelperExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DBPrivacyHelperExampleTests/Pods-DBPrivacyHelperExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D53EF3130F07107F2AA7B2A9 /* libPods-DBPrivacyHelperExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DBPrivacyHelperExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC614D5A1CBFBDA800F77573 /* DBPrivateActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBPrivateActionCell.h; sourceTree = "<group>"; };
+		EC614D5B1CBFBDA800F77573 /* DBPrivateActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBPrivateActionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +175,8 @@
 				9AE88D3E1A11050D00086242 /* DBPrivateHelperController.m */,
 				9AE88D481A11100700086242 /* DBPrivateHelperCell.h */,
 				9AE88D491A11100700086242 /* DBPrivateHelperCell.m */,
+				EC614D5A1CBFBDA800F77573 /* DBPrivateActionCell.h */,
+				EC614D5B1CBFBDA800F77573 /* DBPrivateActionCell.m */,
 				9AE88D3F1A11050D00086242 /* UIImage+ImageEffects.h */,
 				9AE88D401A11050D00086242 /* UIImage+ImageEffects.m */,
 				9AE88D411A11050D00086242 /* UIViewController+DBPrivacyHelper.h */,
@@ -351,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC614D5C1CBFBDA800F77573 /* DBPrivateActionCell.m in Sources */,
 				9AE88D021A10C4AE00086242 /* ViewController.m in Sources */,
 				9AE88D461A11050D00086242 /* UIImage+ImageEffects.m in Sources */,
 				9AE88CFF1A10C4AE00086242 /* AppDelegate.m in Sources */,

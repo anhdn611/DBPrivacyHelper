@@ -11,6 +11,7 @@
 @import UIKit;
 
 #import "DBPrivacyHelperDataSource.h"
+#import "DBPrivateActionCell.h"
 
 /**
  *  Dismiss completion block
@@ -19,6 +20,8 @@ typedef void (^DBPrivateHelperCompletionBlock)();
 
 @interface DBPrivateHelperController : UIViewController
 
+@property (nonatomic, strong) UIButton *settingButton;
+@property (nonatomic, strong) UIView *footerView;
 /**
  *  Set the status bar style
  */
@@ -33,6 +36,7 @@ typedef void (^DBPrivateHelperCompletionBlock)();
  *  The close button
  */
 @property (nonatomic, readonly) UIButton *closeButton;
+
 
 /**
  *  The snapshot of the window
@@ -57,4 +61,7 @@ typedef void (^DBPrivateHelperCompletionBlock)();
  *  @return An instance of DBPrivateHelperController
  */
 + (instancetype)helperForType:(DBPrivacyType)type;
+
+
+
 @end

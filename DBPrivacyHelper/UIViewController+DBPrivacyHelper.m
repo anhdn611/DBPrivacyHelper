@@ -36,6 +36,7 @@
     vc.appIcon = self.appIcon;
     vc.didDismissViewController = didDismiss;
     vc.snapshot = [self snapshot];
+    vc.view.tintColor = [UIColor orangeColor];
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     if (controllerBlock) {

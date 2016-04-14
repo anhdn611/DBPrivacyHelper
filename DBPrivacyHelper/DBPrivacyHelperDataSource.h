@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DBPrivateHelperCell.h"
-
+#import "DBPrivateActionCell.h"
 /**
  *  Privacy Types
  */
@@ -92,4 +92,5 @@ typedef NS_ENUM(NSUInteger, DBPrivacyType){
  *  DBPrivacy type selected
  */
 @property (nonatomic, assign) DBPrivacyType type;
+
 @end

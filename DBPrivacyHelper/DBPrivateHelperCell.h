@@ -12,6 +12,7 @@ extern NSString *const kDBPrivateHelperCellIdentifier;
 
 
 @interface DBPrivateHelperCell : UITableViewCell
+
 /**
  *  Set the cell values
  *
@@ -20,4 +21,5 @@ extern NSString *const kDBPrivateHelperCellIdentifier;
  *  @param row  The row number
  */
 - (void)setIcon:(NSString *)icon text:(NSString *)text row:(NSInteger)row;
+
 @end

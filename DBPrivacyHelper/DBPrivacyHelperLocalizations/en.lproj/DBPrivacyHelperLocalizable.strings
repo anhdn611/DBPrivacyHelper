@@ -24,7 +24,7 @@
 
 "Allow access to \"%@\"\nwith these steps:" = "Cho phép truy cập vào \"%@\"\nbằng những bước sau:";
 
-"Open device settings" = "Mở cài đặt (Setting)";
+"Open device settings" = "Mở cài đặt (Settings)";
 "Tap on Privacy" = "Chọn Quyền riêng tư (Privacy)";
 "Tap on \"%@\"" = "Bật \"%@\"";
 "Allow %@ to use \"%@\"" = "Cho phép %@ sử dụng \"%@\"";

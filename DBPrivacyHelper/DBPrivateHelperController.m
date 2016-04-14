@@ -42,55 +42,37 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.8];
     
     _dataSource = [DBPrivacyHelperDataSource new];
     _dataSource.appIcon = self.appIcon;
     _dataSource.type = _type;
     
-    _backgroundImage = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:_backgroundImage];
-
-    if ( IS_IOS_8 ) {
-        _backgroundImage.image = self.snapshot;
-
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurEffectView.frame = _backgroundImage.bounds;
-        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//        [_backgroundImage addSubview:blurEffectView];
-
-        UIVibrancyEffect *vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
-        UIVisualEffectView *vibrancyEffectView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
-        vibrancyEffectView.frame = _backgroundImage.bounds;
-        vibrancyEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-        [blurEffectView.contentView addSubview:vibrancyEffectView];
-        [_backgroundImage addSubview:blurEffectView];
-    } else {
-        _backgroundImage.image = [self.snapshot applyDarkEffect];
-    }
-
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:(CGRect){ 0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), 80 }];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textColor = [UIColor blackColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     titleLabel.text = _dataSource.cellData[@(_type)][@"header"];
-    titleLabel.numberOfLines = 2;
+    titleLabel.numberOfLines = 0;
 
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [_tableView registerClass:[DBPrivateHelperCell class] forCellReuseIdentifier:kDBPrivateHelperCellIdentifier];
+     [_tableView registerClass:[DBPrivateActionCell class] forCellReuseIdentifier:kDBPrivateActionCellIdentifier];
     _tableView.translatesAutoresizingMaskIntoConstraints = NO;
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.backgroundView = nil;
     _tableView.separatorColor = [UIColor clearColor];
     _tableView.tableHeaderView = titleLabel;
+    
     _tableView.dataSource = _dataSource;
     _tableView.delegate = _dataSource;
     _tableView.scrollEnabled = NO;
+
+    _tableView.tableFooterView = self.footerView;
+    
     [self.view addSubview:_tableView];
 
     _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -98,7 +80,7 @@
     _closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12.0];
     _closeButton.backgroundColor = [UIColor clearColor];
     [_closeButton setTitle:[@"Close" dbph_LocalizedString].uppercaseString forState:UIControlStateNormal];
-    [_closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_closeButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_closeButton addTarget:self action:@selector(bdph_dismissHelper:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_closeButton];
 
@@ -108,6 +90,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_tableView]-0-|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[_closeButton(30)]-0-[_tableView]-0-|" options:0 metrics:nil views:views]];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -134,6 +117,8 @@
 {
     [self dismissViewControllerAnimated:YES completion:self.didDismissViewController];
 }
+
+
 
 
 #pragma mark - Status Bar Style

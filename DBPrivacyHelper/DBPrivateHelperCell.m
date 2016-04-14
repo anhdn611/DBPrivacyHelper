@@ -16,7 +16,6 @@ NSString *const kDBPrivateHelperCellIdentifier = @"kDBPrivateHelperCellIdentifie
     UILabel *_cellLabel;
 }
 
-
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -25,8 +24,8 @@ NSString *const kDBPrivateHelperCellIdentifier = @"kDBPrivateHelperCellIdentifie
         self.contentView.backgroundColor = self.backgroundColor;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.textLabel.font = [UIFont systemFontOfSize:10.0];
-        self.textLabel.textColor = [UIColor colorWithWhite:1.0 alpha:.75];
+        self.textLabel.font = [UIFont systemFontOfSize:12.0];
+        self.textLabel.textColor = [UIColor blackColor];
         
         _iconView = [[UIImageView alloc] init];
         _iconView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -36,7 +35,7 @@ NSString *const kDBPrivateHelperCellIdentifier = @"kDBPrivateHelperCellIdentifie
         _cellLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _cellLabel.backgroundColor = [UIColor clearColor];
         _cellLabel.font = [UIFont boldSystemFontOfSize:12.0];
-        _cellLabel.textColor = [UIColor whiteColor];
+        _cellLabel.textColor = [UIColor blackColor];
         _cellLabel.textAlignment = NSTextAlignmentLeft;
         _cellLabel.numberOfLines = 0;
         _cellLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -58,7 +57,10 @@ NSString *const kDBPrivateHelperCellIdentifier = @"kDBPrivateHelperCellIdentifie
 {
     _iconView.image = [UIImage imageNamed:icon];
     _cellLabel.text = text;
-    self.textLabel.text = [NSString stringWithFormat:@".%li", (long)row];
+    self.textLabel.text =  [NSString stringWithFormat:@"%li", (long)row];
 }
+
+
+
 
 @end

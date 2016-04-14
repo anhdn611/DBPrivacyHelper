@@ -86,7 +86,8 @@ NSLocalizedStringFromTable(key, @"DBPrivacyHelperLocalizable", nil)
                                         @"steps":@[ @{ @"desc":[@"Open device settings" dbph_LocalizedString], @"icon":@"dbph_settingsIcon" }, @{ @"desc":[@"Tap on Privacy" dbph_LocalizedString], @"icon":@"dbph_privacyIcon" }, @{ @"desc":[self dbph_typeTitle:[@"Camera" dbph_LocalizedString]], @"icon":@"dbph_cameraIcon" }, @{ @"desc":[self dbph_typeAllowText:[@"Camera" dbph_LocalizedString]], @"icon":@"dbph_switchIcon" }]},
               
               @(DBPrivacyTypeLocation):@{ @"header":[self dbph_headerText:[@"Location Services" dbph_LocalizedString]],
-                                          @"steps":@[ @{ @"desc":[@"Open device settings" dbph_LocalizedString], @"icon":@"dbph_settingsIcon" }, @{ @"desc":[@"Tap on Privacy" dbph_LocalizedString], @"icon":@"dbph_privacyIcon" }, @{ @"desc":[self dbph_typeTitle:[@"Location Services" dbph_LocalizedString]], @"icon":@"dbph_localizationIcon" }, @{ @"desc":[self dbph_typeAllowText:[@"Location Services" dbph_LocalizedString]], @"icon":@"dbph_checkIcon" }]},
+                                          @"steps":@[ @{ @"desc":[@"Open device settings" dbph_LocalizedString], @"icon":@"dbph_settingsIcon" }, @{ @"desc":[@"Tap on Privacy" dbph_LocalizedString], @"icon":@"dbph_privacyIcon" }, @{ @"desc":[self dbph_typeTitle:[@"Location Services" dbph_LocalizedString]], @"icon":@"dbph_localizationIcon" }, @{ @"desc":[self dbph_typeAllowText:[@"Location Services" dbph_LocalizedString]], @"icon":@"dbph_checkIcon" }],
+                                          @"actions":@[ @"settings"]},
               
               @(DBPrivacyTypeHealth):@{ @"header":[self dbph_headerText:[@"Health" dbph_LocalizedString]],
                                         @"steps":@[ @{ @"desc":[@"Open device settings" dbph_LocalizedString], @"icon":@"dbph_settingsIcon" }, @{ @"desc":[@"Tap on Privacy" dbph_LocalizedString], @"icon":@"dbph_privacyIcon" }, @{ @"desc":[self dbph_typeTitle:[@"Health" dbph_LocalizedString]], @"icon":@"dbph_healthIcon" }, @{ @"desc":[self dbph_typeAllowText:[@"Health" dbph_LocalizedString]], @"icon":@"dbph_switchIcon" }]},
@@ -123,16 +124,38 @@ NSLocalizedStringFromTable(key, @"DBPrivacyHelperLocalizable", nil)
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.cellData[@(self.type)][@"steps"] count];
+    if (section == 0) {
+        return [self.cellData[@(self.type)][@"steps"] count];
+    } else if (section == 1) {
+        return [self.cellData[@(self.type)][@"actions"] count];
+    } else {
+        return 0;
+    }
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.cellData[@(self.type)][@"actions"]) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DBPrivateHelperCell *cell = [tableView dequeueReusableCellWithIdentifier:kDBPrivateHelperCellIdentifier forIndexPath:indexPath];
-    [cell setIcon:self.cellData[@(self.type)][@"steps"][indexPath.row][@"icon"]
-             text:self.cellData[@(self.type)][@"steps"][indexPath.row][@"desc"]
-              row:indexPath.row + 1];
-    return cell;
+    
+    if (indexPath.section == 0) {
+        DBPrivateHelperCell *cell = [tableView dequeueReusableCellWithIdentifier:kDBPrivateHelperCellIdentifier forIndexPath:indexPath];
+        [cell setIcon:self.cellData[@(self.type)][@"steps"][indexPath.row][@"icon"]
+                 text:self.cellData[@(self.type)][@"steps"][indexPath.row][@"desc"]
+                  row:indexPath.row + 1];
+        return cell;
+    } else {
+        DBPrivateActionCell *cell = [tableView dequeueReusableCellWithIdentifier:kDBPrivateActionCellIdentifier forIndexPath:indexPath];
+        [cell setActionText:self.cellData[@(self.type)][@"actions"][indexPath.row]];
+        return cell;
+    }
+    
 }
 
 
@@ -142,5 +165,18 @@ NSLocalizedStringFromTable(key, @"DBPrivacyHelperLocalizable", nil)
 {
     return [self dbph_cellHeightForText:self.cellData[@(_type)][@"steps"][indexPath.row][@"desc"]];
 }
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        NSString *action = self.cellData[@(self.type)][@"actions"][indexPath.row];
+        if (action == kDBPrivateActionOpenSettings) {
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
+
 
 @end
