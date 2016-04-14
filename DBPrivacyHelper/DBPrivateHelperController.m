@@ -42,7 +42,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:0.9];
+    self.view.backgroundColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:1];
     
     _dataSource = [DBPrivacyHelperDataSource new];
     _dataSource.appIcon = self.appIcon;

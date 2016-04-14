@@ -24,7 +24,7 @@ NSString *const kDBPrivateHelperCellIdentifier = @"kDBPrivateHelperCellIdentifie
         self.contentView.backgroundColor = self.backgroundColor;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        self.textLabel.font = [UIFont systemFontOfSize:12.0];
+        self.textLabel.font = [UIFont systemFontOfSize:14.0];
         self.textLabel.textColor = [UIColor blackColor];
         
         _iconView = [[UIImageView alloc] init];
@@ -34,7 +34,7 @@ NSString *const kDBPrivateHelperCellIdentifier = @"kDBPrivateHelperCellIdentifie
         _cellLabel = [[UILabel alloc] init];
         _cellLabel.translatesAutoresizingMaskIntoConstraints = NO;
         _cellLabel.backgroundColor = [UIColor clearColor];
-        _cellLabel.font = [UIFont boldSystemFontOfSize:12.0];
+        _cellLabel.font = [UIFont boldSystemFontOfSize:14.0];
         _cellLabel.textColor = [UIColor blackColor];
         _cellLabel.textAlignment = NSTextAlignmentLeft;
         _cellLabel.numberOfLines = 0;
